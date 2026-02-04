@@ -7,6 +7,9 @@ public class Detector : MonoBehaviour
 {
     [SerializeField] private float _radius;
     [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private Vector3 position;
+
+
 
     private readonly Collider[] _hits = new Collider[10];
     
@@ -22,6 +25,6 @@ public class Detector : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Detected ? Color.green : Color.red;
-        Gizmos.DrawWireSphere(transform.position, _radius);
+        Gizmos.DrawWireSphere(transform.position + position, _radius);
     }
 }

@@ -8,15 +8,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _horizontalSpeed = 5F;
     [SerializeField] private Detector gndDetect;
     [SerializeField] private Animator _animator;
-    [SerializeField] private float _delay = 0.01f;
-    
-    [SerializeField] float RotationSmoothTime = 0.12f;
-    
     
     private PlayerInputs _inputs;
     private CharacterController _controller;
     
-    private float _targetRotation = 0.0f;
     private float _rotationVelocity;
     
     private Camera _mainCamera;
@@ -52,10 +47,7 @@ public class PlayerController : MonoBehaviour
         MoveX = _inputs._move.x;
         MoveY = _inputs._move.y;
         
-        
-        float lookDirectionX = lookX;
-        
-        transform.Rotate(0, lookDirectionX, 0);
+        transform.Rotate(0, lookX, 0);
         
         transform.forward = transform.rotation * Vector3.forward;
         
