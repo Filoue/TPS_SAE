@@ -1,0 +1,26 @@
+.panel-container {
+    margin: 10%;
+}
+#game-name {
+    -unity-text-align: middle-center;
+    font-size: 48px;
+}
+
+.btn-container {
+    margin: 10%;
+}
+
+.btn-main {
+    background-color: black;
+    color: white;
+    margin-left: 25%;
+    margin-right: 25%;
+    transition: .25s;
+}
+
+.btn-main:hover {
+    background-color: white;
+    color: black;
+    margin-left: 20%;
+    margin-right: 20%;
+}

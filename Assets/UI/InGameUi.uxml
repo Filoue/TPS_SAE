@@ -1,0 +1,13 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/InGameUI.uss?fileID=7433441132597879392&amp;guid=f3f271f846fa63842b99820db0ff4a0d&amp;type=3#InGameUI" />
+    <ui:VisualElement name="Root" style="flex-grow: 1;">
+        <ui:VisualElement name="to-pick-up" class="" style="flex-direction: row;">
+            <ui:Label name="pick-up" text="00" data-source="project://database/Assets/Scripts/ScriptableObject/items.asset?fileID=11400000&amp;guid=c5215f1e2fa34e94ca36afc607dd3062&amp;type=2#items" enabled="true" class="txt-principal">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="item" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label name="pick-up-total" text="/ 11" class="txt-principal" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

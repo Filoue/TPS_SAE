@@ -52,11 +52,10 @@ public class AiMovement : MonoBehaviour
     private void Update()
     {
         // Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position + Vector3.forward * 5, sightRange, _whatIsPlayer);
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, _whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, _whatIsPlayer);
         
-        if(!playerInSightRange && !playerInAttackRange) Patroling();
-        if(playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if(!playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange)
         {
             AttackPlayer();
@@ -78,21 +77,6 @@ public class AiMovement : MonoBehaviour
         _audioSource.PlayOneShot(_audioClipSteps[Random.Range(0, _audioClipSteps.Length)]);
     }
 
-    private void Patroling()
-    {
-        if (!walkPointSet) SearchWalkPoint();
-        
-        if (walkPointSet)
-            _agent.SetDestination(walkPoint);
-        
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        if (distanceToWalkPoint.magnitude < 1f)
-        {
-            walkPointSet = false;
-        }
-    }
-
     private void SearchWalkPoint()
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -112,7 +96,12 @@ public class AiMovement : MonoBehaviour
     private void AttackPlayer()
     {
         _animator.SetBool("Attack", true);
-        
+    }
+
+    private IEnumerator IfStuck()
+    {
+        yield return new WaitForSeconds(10f);
+        SearchWalkPoint();
     }
 
     private void OnFootSteps()
